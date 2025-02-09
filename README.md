@@ -6,21 +6,22 @@ This is a fork of https://github.com/TeamNewPipe/NewPipe
 
 This fork reverts those changes. 
 
-
+<br/>
 ## Installation
 
-Download the APK file to your phone:
+Download the APK file to your phone:\
 https://github.com/JoeSchiff/newpipe_perf/releases/download/v0.27.6/NewPipe_v0.27.6_perf.apk
 
 Open the APK file in your phone to install.
 
+<br/>
 ## Differences from NewPipe
 
-I make only 2 changes to the app. Both changes are to this file:
+I make only 2 changes to the app. Both changes are to this file:\
 app/src/main/java/org/schabi/newpipe/local/feed/service/FeedLoadManager.kt
 
-Increased `PARALLEL_EXTRACTIONS` from 3 to 6.
-And set `BATCH_SIZE` to an arbitrarily high number.
+Increased `PARALLEL_EXTRACTIONS` from 3 to 6.\
+Increased `BATCH_SIZE` from 50 to an arbitrarily high number.
 
 
 
