@@ -65,8 +65,5 @@ jobs:
           asset_path: app/build/outputs/apk/release/NewPipe_v${{ env.VERSION_NAME }}.apk
           asset_name: NewPipe_v${{ env.VERSION_NAME }}.apk
           asset_content_type: application/vnd.android.package-archive
-          token: ${{ secrets.GITHUB_TOKEN }} 
-
-      - name: Setup tmate session
-        if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
