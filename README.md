@@ -10,7 +10,7 @@ This fork reverts those changes.
 ## Installation
 
 Download the APK file to your phone:
-https://github.com/JoeSchiff/newpipe_perf/latest
+https://github.com/JoeSchiff/newpipe_perf/latest/download/app.apk
 
 Open the APK file in your phone to install.
 
