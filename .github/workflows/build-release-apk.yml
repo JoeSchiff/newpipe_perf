@@ -45,7 +45,6 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           # assume there is only one APK in that folder
           mv app/build/outputs/apk/release/*.apk "app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk"
-          echo here app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk
 
       - name: Create Release
         id: create_release
@@ -66,6 +65,7 @@ jobs:
           asset_path: app/build/outputs/apk/release/NewPipe_v${{ env.VERSION_NAME }}.apk
           asset_name: NewPipe_v${{ env.VERSION_NAME }}.apk
           asset_content_type: application/vnd.android.package-archive
+          token: ${{ secrets.GITHUB_TOKEN }} 
 
       - name: Setup tmate session
         if: ${{ failure() }}
