@@ -50,3 +50,6 @@ jobs:
         with:
           name: app
           path: app/build/outputs/apk/release/*.apk
+  - name: Setup tmate session
+    if: ${{ failure() }}
+    uses: mxschmitt/action-tmate@v3
