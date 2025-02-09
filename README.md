@@ -1,10 +1,12 @@
 ## Overview
 
-This is a fork of [NewPipe](https://github.com/TeamNewPipe/NewPipe)
+This is a fork of [NewPipe](https://github.com/TeamNewPipe/NewPipe).
 
 [A pull request](https://github.com/TeamNewPipe/NewPipe/pull/11743/commits) was introduced into v0.27.3 which slowed the feed loading. 
 
-This fork reverts those changes. Currently based on NewPipe v0.27.6
+This fork reverts those changes.
+
+Currently based on NewPipe v0.27.6
 
 <br>
 
