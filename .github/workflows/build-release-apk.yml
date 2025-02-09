@@ -14,7 +14,7 @@ jobs:
 
       - name: Modify code
         run: |
-          filepath="NewPipe/app/src/main/java/org/schabi/newpipe/local/feed/service/FeedLoadManager.kt"
+          filepath="app/src/main/java/org/schabi/newpipe/local/feed/service/FeedLoadManager.kt"
 
           orig_line_1="private const val PARALLEL_EXTRACTIONS = 3"
           new_line_1="private const val PARALLEL_EXTRACTIONS = 6"
