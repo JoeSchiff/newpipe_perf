@@ -7,7 +7,7 @@ jobs:
   modify_and_release:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out target repository
+      - name: Check out upstream repo
         uses: actions/checkout@v3
         with:
           repository: TeamNewPipe/NewPipe
@@ -46,24 +46,21 @@ jobs:
           # assume there is only one APK in that folder
           mv app/build/outputs/apk/release/*.apk "app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk"
 
-      - name: Create Release
+      - name: Create release
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release v${{ env.VERSION_NAME }}
-          body: "Android APK Release."
-          draft: false
-          prerelease: false
+          tag_name: v${{ env.VERSION_NAME }}
+          release_name: v${{ env.VERSION_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
-      - name: Upload APK to Release
+      - name: Upload APK to release
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: app/build/outputs/apk/release/NewPipe_v${{ env.VERSION_NAME }}.apk
-          asset_name: NewPipe_v${{ env.VERSION_NAME }}.apk
+          asset_name: NewPipe_v${{ env.VERSION_NAME }}_perf.apk
           asset_content_type: application/vnd.android.package-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
