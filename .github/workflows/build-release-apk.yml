@@ -1,4 +1,4 @@
-name: Update and Merge Changes
+name: Modify and release
 
 on:
   workflow_dispatch:
@@ -49,8 +49,22 @@ jobs:
           # assume there is only one APK in that folder
           mv app/build/outputs/apk/release/*.apk "app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk"
 
-      - name: "Upload APK"
-        uses: actions/upload-artifact@v4
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         with:
-          name: app
-          path: app/build/outputs/apk/release/*.apk
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body: "Android APK Release."
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+      - name: Upload APK to Release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk
+          asset_name: app-release.apk
+          asset_content_type: application/vnd.android.package-archive
