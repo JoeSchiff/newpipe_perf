@@ -21,11 +21,11 @@ Open the APK file in your phone to install.
 
 ## Differences from NewPipe
 
-I made only 2 changes to the app. Both changes are to this file:\
+I made only 3 changes to the app. 2 changes to this file:\
 app/src/main/java/org/schabi/newpipe/local/feed/service/FeedLoadManager.kt
 
 Increased `PARALLEL_EXTRACTIONS` from 3 to 6.\
 Increased `BATCH_SIZE` from 50 to an arbitrarily high number.
 
-
+I also built as `assembledebug` instead of `assemblerelease` (until I can figure out how to sign it).
 
