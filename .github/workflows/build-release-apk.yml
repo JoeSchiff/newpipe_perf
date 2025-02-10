@@ -36,15 +36,10 @@ jobs:
 
       - name: "Rename APK"
         run: |
-          VERSION_NAME="$(jq -r ".elements[0].versionName" "app/build/outputs/apk/release/output-metadata.json")"
-          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
-          echo "Version name: $VERSION_NAME" >> "$GITHUB_STEP_SUMMARY"
-          echo '```json' >> "$GITHUB_STEP_SUMMARY"
-          cat "app/build/outputs/apk/release/output-metadata.json" >> "$GITHUB_STEP_SUMMARY"
-          echo >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          # assume there is only one APK in that folder
-          mv app/build/outputs/apk/release/*.apk "app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk"
+          OUTPUT_DIR=/home/runner/work/newpipe_perf/newpipe_perf/app/build/outputs/apk/debug
+          VERSION_NAME="$(jq -r ".elements[0].versionName" "$OUTPUT_DIR/output-metadata.json")"
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV          
+          mv "$OUTPUT_DIR/app-debug.apk" "$OUTPUT_DIR/NewPipe_v$VERSION_NAME.apk"
       - name: Setup tmate session
         if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
@@ -61,7 +56,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/release/NewPipe_v${{ env.VERSION_NAME }}.apk
+          asset_path: app/build/outputs/apk/debug/NewPipe_v${{ env.VERSION_NAME }}.apk
           asset_name: NewPipe_v${{ env.VERSION_NAME }}_perf.apk
           asset_content_type: application/vnd.android.package-archive
         env:
