@@ -2,7 +2,7 @@
 
 This is a fork of [NewPipe](https://github.com/TeamNewPipe/NewPipe).
 
-[A pull request](https://github.com/TeamNewPipe/NewPipe/pull/11743/commits) was introduced into v0.27.3 which slowed the feed loading. 
+[A pull request](https://github.com/TeamNewPipe/NewPipe/pull/11743/commits) was introduced into NewPipe v0.27.3 which slowed the feed loading for YouTube videos. 
 
 This fork reverts those changes.
 
