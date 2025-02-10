@@ -45,7 +45,9 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           # assume there is only one APK in that folder
           mv app/build/outputs/apk/release/*.apk "app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk"
-
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
