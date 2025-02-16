@@ -35,7 +35,7 @@ jobs:
           orig_line_3='resValue "string", "app_name", "NewPipe Debug"'
           new_line_3='resValue "string", "app_name", "NewPipe_perf"'
 
-          sed -i "s|$orig_line_1|$new_line_1|" $filepath2
+          sed -i "s|$orig_line_3|$new_line_3|" $filepath2
     
       - uses: actions/setup-java@v4
         with:
