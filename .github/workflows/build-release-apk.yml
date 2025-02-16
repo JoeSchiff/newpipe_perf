@@ -57,6 +57,7 @@ jobs:
         run: |
           VERSION_NAME="$(jq -r ".elements[0].versionName" "app/build/outputs/apk/release/output-metadata.json")"
           echo "Version name: $VERSION_NAME" >> "$GITHUB_STEP_SUMMARY"
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
           echo '```json' >> "$GITHUB_STEP_SUMMARY"
           cat "app/build/outputs/apk/release/output-metadata.json" >> "$GITHUB_STEP_SUMMARY"
           echo >> "$GITHUB_STEP_SUMMARY"
