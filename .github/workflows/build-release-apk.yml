@@ -30,7 +30,7 @@ jobs:
           sed -i "s|$orig_line_1|$new_line_1|" $filepath1
           sed -i "s|$orig_line_2|$new_line_2|" $filepath1
 
-          filepath2="app/src/main/java/org/schabi/newpipe/local/feed/service/FeedLoadManager.kt"
+          filepath2="app/build.gradle"
 
           orig_line_3='resValue "string", "app_name", "NewPipe Debug"'
           new_line_3='resValue "string", "app_name", "NewPipe_perf"'
