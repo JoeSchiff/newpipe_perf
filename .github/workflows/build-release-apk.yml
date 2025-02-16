@@ -55,6 +55,7 @@ jobs:
 
       - name: "Rename APK"
         run: |
+          ls app/build/outputs/apk/release
           VERSION_NAME="$(jq -r ".elements[0].versionName" "app/build/outputs/apk/release/output-metadata.json")"
           echo "Version name: $VERSION_NAME" >> "$GITHUB_STEP_SUMMARY"
           echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
