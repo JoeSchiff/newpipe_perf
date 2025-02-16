@@ -7,6 +7,11 @@ jobs:
   modify_and_release:
     runs-on: ubuntu-latest
     steps:
+      - name: Install zipalign
+        run: |
+          sudo apt update
+          sudo apt install android-sdk-build-tools
+        
       - name: Check out upstream repo
         uses: actions/checkout@v3
         with:
