@@ -65,6 +65,9 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           # assume there is only one APK in that folder
           mv app/build/outputs/apk/release/*.apk "app/build/outputs/apk/release/NewPipe_v$VERSION_NAME.apk"
+
+      - name: Align APK
+        run: zipalign -c -P 4 -v 4 app/build/outputs/apk/release/NewPipe_v${{ env.VERSION_NAME }}.apk
           
       - name: Create release
         id: create_release
